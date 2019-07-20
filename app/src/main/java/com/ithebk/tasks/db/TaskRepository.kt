@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 class TaskRepository(private val taskDao : TaskDao) {
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
-    val allTasks : LiveData<List<Task>> =taskDao.getAllTasks();
+    val allTasks : LiveData<List<Task>> = taskDao.getAllTasks();
 
     // The suspend modifier tells the compiler that this must be called from a
     // coroutine or another suspend function.
@@ -14,5 +14,8 @@ class TaskRepository(private val taskDao : TaskDao) {
     // thread, blocking the UI.
     suspend fun insert(task: Task) {
         taskDao.insert(task);
+    }
+    suspend fun delete(task: Task) {
+        taskDao.delete(task);
     }
 }

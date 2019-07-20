@@ -1,15 +1,12 @@
 package com.ithebk.tasks.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface TaskDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(task: Task)
 
     @Query("SELECT * from task_table ORDER BY info ASC")
@@ -17,6 +14,9 @@ interface TaskDao {
 
     @Query("DELETE FROM task_table")
     fun deleteAll()
+
+    @Delete()
+    fun delete(task: Task)
 
 
 

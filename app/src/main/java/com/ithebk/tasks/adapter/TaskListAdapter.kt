@@ -4,11 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ithebk.tasks.R
 import com.ithebk.tasks.callbacks.MainItemViewClickCallback
 import com.ithebk.tasks.db.Task
+import kotlinx.android.synthetic.main.layout_task.view.*
 
 class TaskListAdapter internal constructor(
     context: Context,
@@ -20,6 +22,7 @@ class TaskListAdapter internal constructor(
 
     inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val taskItemView: TextView = itemView.findViewById(R.id.textView)
+        val statusImage: ImageView = itemView.findViewById(R.id.task_card_status_image)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -29,8 +32,25 @@ class TaskListAdapter internal constructor(
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val current = tasks[position]
         holder.taskItemView.text = current.info
-        holder.taskItemView.setOnClickListener {
-            callback.onItemClick(position, current.info)
+        if(current.done) {
+            holder.statusImage.setImageResource(R.drawable.ic_task_in_active)
+        }
+        else {
+            holder.statusImage.setImageResource(R.drawable.ic_task_active)
+        }
+        if(position%2 == 0) {
+            holder.itemView.sub_tasks_ll.visibility = View.VISIBLE;
+        }
+        else {
+            holder.itemView.sub_tasks_ll.visibility = View.GONE;
+        }
+        holder.itemView.task_card_status_frame.setOnClickListener{
+            callback.onItemClick(position, current)
+        }
+
+        holder.itemView.setOnLongClickListener {
+            callback.onItemLongClick(position, current)
+            false;
         }
     }
 

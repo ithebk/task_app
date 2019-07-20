@@ -9,9 +9,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Task::class], version = 1)
+@Database(entities = arrayOf(Task::class, SubTask::class), version = 1)
 abstract class TaskRoomDatabase : RoomDatabase() {
     abstract fun taskDao(): TaskDao
+    abstract fun subTaskDao(): SubTaskDao
 
     companion object {
         @Volatile
@@ -38,14 +39,6 @@ abstract class TaskRoomDatabase : RoomDatabase() {
         private class TaskDatabaseCallback(
             private val scope: CoroutineScope
         ) : RoomDatabase.Callback() {
-            override fun onOpen(db: SupportSQLiteDatabase) {
-                super.onOpen(db)
-                INSTANCE?.let { database ->
-                    scope.launch(Dispatchers.IO) {
-                        populateDatabase(database.taskDao())
-                    }
-                }
-            }
         }
 
         /**
