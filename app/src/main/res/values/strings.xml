@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">New Task App</string>
+    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior
+    </string>
+    <string name="all_tasks">All\nTasks</string>
+    <string name="date1">Jul\n20</string>
+</resources>

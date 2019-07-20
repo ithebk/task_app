@@ -1,0 +1,53 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <style name="AppTheme.Light" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primary_color_light</item>
+        <item name="colorPrimaryDark">@color/primary_color_light</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="task_card_title_color">@color/primary_text_color_dark</item>
+        <item name="primary_text_color">@color/primary_text_color_dark</item>
+        <item name="secondary_text_color">@color/secondary_text_color_dark</item>
+        <item name="task_icon_color">@color/task_icon_color_dark</item>
+        <item name="extra_icon_color">@color/extra_icon_color_dark</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primary_color_dark</item>
+        <item name="colorPrimaryDark">@color/primary_color_dark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="task_card_title_color">@color/primary_text_color_light</item>
+        <item name="primary_text_color">@color/primary_text_color_light</item>
+        <item name="secondary_text_color">@color/secondary_text_color_light</item>
+        <item name="task_icon_color">@color/task_icon_color_light</item>
+        <item name="extra_icon_color">@color/extra_icon_color_light</item>
+    </style>
+
+    <style name="TaskTitleCard">
+        <item name="android:textSize">@dimen/task_card_title_size</item>
+        <item name="android:textColor">?task_card_title_color</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:padding">@dimen/task_card_title_padding</item>
+
+    </style>
+    <style name="SubTaskTitleCard">
+        <item name="android:textSize">@dimen/sub_task_card_title_size</item>
+        <item name="android:textColor">?secondary_text_color</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:padding">@dimen/sub_task_card_title_padding</item>
+
+    </style>
+    <style name="SubTaskHeader">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/sub_task_card_header_size</item>
+        <item name="android:textColor">?task_card_title_color</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:padding">@dimen/sub_task_card_header_padding</item>
+        <item name="android:drawablePadding">@dimen/sub_task_card_header_padding</item>
+
+    </style>
+
+</resources>

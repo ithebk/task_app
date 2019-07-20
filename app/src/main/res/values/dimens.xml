@@ -1,0 +1,12 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="task_card_title_size">16sp</dimen>
+    <dimen name="task_card_title_padding">8dp</dimen>
+
+    <dimen name="sub_task_card_title_size">13sp</dimen>
+    <dimen name="sub_task_card_title_padding">4dp</dimen>
+
+    <dimen name="sub_task_card_header_size">14sp</dimen>
+    <dimen name="sub_task_card_header_padding">8dp</dimen>
+
+</resources>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".screens.MainActivity">
+    <com.google.android.material.appbar.AppBarLayout
+            app:elevation="2dp"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+                app:elevation="2dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/main_toolbar"
+                android:contentInsetStart="0dp"
+                android:contentInsetLeft="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                android:layout_width="match_parent"
+                app:layout_scrollFlags="scroll|enterAlways"
+        >
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <androidx.cardview.widget.CardView
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:paddingStart="16dp"
+                        app:cardElevation="2dp"
+                        app:cardBackgroundColor="?colorPrimary"
+                        app:cardCornerRadius="4dp"
+                        android:paddingEnd="16dp"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <RelativeLayout
+                                android:paddingStart="16dp"
+                                android:paddingEnd="16dp"
+                                android:gravity="center_vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp">
+                            <TextView
+                                    android:id="@+id/search_text"
+                                    android:textColor="?secondary_text_color"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Search your tasks"
+                                    android:textSize="16sp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentStart="true"
+                                    android:fontFamily="@font/convergence"
+                            />
+                            <ImageView
+                                    android:layout_gravity="end"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:srcCompat="@drawable/ic_more"/>
+
+
+                        </RelativeLayout>
+                        <LinearLayout
+                                android:visibility="gone"
+                                android:id="@+id/calender_linear_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                            <LinearLayout android:layout_width="wrap_content"
+                                          android:background="@drawable/tab_selector"
+                                          android:padding="8dp"
+                                          android:layout_height="56dp">
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/all_tasks"
+                                        android:gravity="center"
+                                        android:textSize="16sp"
+                                        android:layout_gravity="center_vertical"
+                                        android:textColor="?primary_text_color"
+                                />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                    android:layout_marginStart="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:padding="8dp"
+                                    android:layout_height="56dp">
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/date1"
+                                        android:gravity="center"
+                                        android:textSize="16sp"
+                                        android:layout_gravity="center_vertical"
+                                        android:textColor="?secondary_text_color"
+                                />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                    android:layout_marginStart="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:padding="8dp"
+                                    android:layout_height="56dp">
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/date1"
+                                        android:gravity="center"
+                                        android:textSize="16sp"
+                                        android:layout_gravity="center_vertical"
+                                        android:textColor="?secondary_text_color"
+                                />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+                <RelativeLayout
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <TextView
+                            android:layout_alignParentLeft="true"
+                            android:textSize="16sp"
+                            android:textColor="?secondary_text_color"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="4 done of 6 tasks"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    <TextView
+                            android:id="@+id/task_all_text"
+                            android:layout_alignParentEnd="true"
+                            android:text="All Tasks"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorAccent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.core.widget.NestedScrollView
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/task_main_recycler_view"
+                android:clipToPadding="true"
+                android:paddingBottom="76dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:paddingTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.cardview.widget.CardView
+            app:cardCornerRadius="25dp"
+            android:layout_margin="20dp"
+            android:id="@+id/add_task_fab"
+            android:foreground="?selectableItemBackground"
+            android:layout_gravity="center_horizontal|bottom"
+            app:cardBackgroundColor="@color/colorAccent"
+            android:layout_width="200dp"
+            android:layout_height="50dp">
+        <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+            <ImageView
+                    android:src="@drawable/ic_add_24dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add new task"
+                    android:fontFamily="@font/convergence"/>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
