@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewAdapter: TaskListAdapter
-    private lateinit var viewManager: StaggeredGridLayoutManager
+    private lateinit var viewManager: LinearLayoutManager
     private lateinit var taskViewModel: TaskViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,8 +58,8 @@ class MainActivity : AppCompatActivity() {
                 delete(task)
             }
         })
-        viewManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-       // viewManager = LinearLayoutManager(this)
+       // viewManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        viewManager = LinearLayoutManager(this)
         task_main_recycler_view.apply {
             setHasFixedSize(true)
             layoutManager = viewManager

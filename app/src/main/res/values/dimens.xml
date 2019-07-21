@@ -9,4 +9,6 @@
     <dimen name="sub_task_card_header_size">14sp</dimen>
     <dimen name="sub_task_card_header_padding">8dp</dimen>
 
+    <dimen name="editor_header_size">20sp</dimen>
+
 </resources>
