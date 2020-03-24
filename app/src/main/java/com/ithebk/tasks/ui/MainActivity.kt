@@ -46,9 +46,8 @@ class MainActivity : AppCompatActivity() {
         taskViewModel.allTasks.observe(this, Observer { tasks ->
             // Update the cached copy of the task in the adapter.
             tasks?.let { viewAdapter.setWords(it) }
-           // text_view_tasks_done.text = tasks.size.toString() + " Tasks created"
-           // val doneTasks = tasks.filter { task: Task -> task.done ==1 }
-            text_view_tasks_not_done.text = tasks.size.toString() + " Yet to finish"
+            text_view_tasks_done.text = tasks.filter { it.done }.size.toString() + " Tasks completed"
+            text_view_tasks_not_done.text = tasks.filter { !it.done }.size.toString()  + " Yet to finish"
         })
     }
 

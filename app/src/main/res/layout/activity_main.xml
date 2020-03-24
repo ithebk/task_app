@@ -139,7 +139,7 @@
                 <androidx.cardview.widget.CardView
                         app:cardElevation="1dp"
                         app:cardCornerRadius="4dp"
-                        app:cardBackgroundColor="#a5d6a7"
+                        app:cardBackgroundColor="@color/done_task"
                         android:layout_weight="1"
                         android:layout_width="0dp"
 
@@ -157,7 +157,7 @@
                     app:cardCornerRadius="4dp"
                     android:layout_marginLeft="8dp"
                     app:cardElevation="1dp"
-                    app:cardBackgroundColor="#ffcdd2"
+                    app:cardBackgroundColor="@color/yet_to_done_task"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="60dp">

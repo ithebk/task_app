@@ -3,7 +3,7 @@
     <color name="primary_color_light">#fff</color>
     <color name="primary_color_dark">#494B4B</color>
 
-    <color name="colorAccent">#ef5350</color>
+    <color name="colorAccent">#7986CB</color>
 
 
     <color name="primary_text_color_light">#fff</color>
@@ -19,5 +19,7 @@
     <color name="extra_icon_color_light">#eee</color>
     <color name="extra_icon_color_dark">#c7c7c7</color>
     <color name="delete_red">#DD2C00</color>
+    <color name="yet_to_done_task">#ffcdd2</color>
+    <color name="done_task">#a5d6a7</color>
 
 </resources>

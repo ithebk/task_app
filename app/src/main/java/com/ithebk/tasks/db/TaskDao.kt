@@ -9,7 +9,7 @@ interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(task: Task)
 
-    @Query("SELECT * from task_table ORDER BY info ASC")
+    @Query("SELECT * from task_table ORDER BY modified_at DESC")
     fun getAllTasks(): LiveData<List<Task>>
 
     @Query("DELETE FROM task_table")
