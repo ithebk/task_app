@@ -1,4 +1,4 @@
-package com.ithebk.tasks.screens
+package com.ithebk.tasks.ui
 
 import android.app.Activity
 import android.content.Intent
@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ithebk.tasks.R
 import com.ithebk.tasks.adapter.TaskListAdapter
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewAdapter: TaskListAdapter
-    private lateinit var viewManager: LinearLayoutManager
+    private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var taskViewModel: TaskViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +46,9 @@ class MainActivity : AppCompatActivity() {
         taskViewModel.allTasks.observe(this, Observer { tasks ->
             // Update the cached copy of the task in the adapter.
             tasks?.let { viewAdapter.setWords(it) }
+           // text_view_tasks_done.text = tasks.size.toString() + " Tasks created"
+           // val doneTasks = tasks.filter { task: Task -> task.done ==1 }
+            text_view_tasks_not_done.text = tasks.size.toString() + " Yet to finish"
         })
     }
 
@@ -58,8 +62,8 @@ class MainActivity : AppCompatActivity() {
                 delete(task)
             }
         })
-       // viewManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        viewManager = LinearLayoutManager(this)
+        viewManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+       // viewManager = LinearLayoutManager(this)
         task_main_recycler_view.apply {
             setHasFixedSize(true)
             layoutManager = viewManager

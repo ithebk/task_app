@@ -38,12 +38,6 @@ class TaskListAdapter internal constructor(
         else {
             holder.statusImage.setImageResource(R.drawable.ic_task_active)
         }
-        if(position%2 == 0) {
-            holder.itemView.sub_tasks_ll.visibility = View.VISIBLE;
-        }
-        else {
-            holder.itemView.sub_tasks_ll.visibility = View.GONE;
-        }
         holder.itemView.task_card_status_frame.setOnClickListener{
             callback.onItemClick(position, current)
         }

@@ -1,13 +1,11 @@
-package com.ithebk.tasks.screens
+package com.ithebk.tasks.ui
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import com.ithebk.tasks.R
 
 class AddTaskActivity : AppCompatActivity() {

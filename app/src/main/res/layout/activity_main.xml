@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context=".screens.MainActivity">
+        tools:context=".ui.MainActivity">
     <com.google.android.material.appbar.AppBarLayout
             app:elevation="2dp"
             android:background="@null"
@@ -23,16 +23,15 @@
                 app:contentInsetStart="0dp"
                 android:layout_width="match_parent"
                 app:layout_scrollFlags="scroll|enterAlways"
-        >
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+        > <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
                 <androidx.cardview.widget.CardView
                         android:layout_marginTop="2dp"
                         android:layout_marginStart="2dp"
                         android:layout_marginEnd="2dp"
+                        android:layout_margin="8dp"
                         android:gravity="center_vertical"
                         android:layout_width="match_parent"
                         android:paddingStart="16dp"
@@ -60,7 +59,7 @@
                                     android:textSize="16sp"
                                     android:layout_centerVertical="true"
                                     android:layout_alignParentStart="true"
-                                    android:fontFamily="@font/convergence"
+                                    android:fontFamily="@font/roboto_regular"
                             />
                             <ImageView
                                     android:layout_gravity="end"
@@ -132,41 +131,57 @@
 
 
                 </androidx.cardview.widget.CardView>
-                <RelativeLayout
-                        android:paddingStart="6dp"
-                        android:paddingEnd="6dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+            <LinearLayout
+                    android:weightSum="2"
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <androidx.cardview.widget.CardView
+                        app:cardElevation="1dp"
+                        app:cardCornerRadius="4dp"
+                        app:cardBackgroundColor="#a5d6a7"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+
+                        android:layout_height="60dp">
                     <TextView
-                            android:layout_alignParentLeft="true"
-                            android:textSize="16sp"
-                            android:textColor="?secondary_text_color"
-                            android:fontFamily="@font/roboto_regular"
-                            android:text="4 done of 6 tasks"
+                            android:id="@+id/text_view_tasks_done"
+                            android:padding="8dp"
+                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
+                            android:text="4 tasks completed"
+                            android:fontFamily="@font/roboto_bold"
                             android:layout_height="wrap_content"/>
-                    <TextView
-                            android:id="@+id/task_all_text"
-                            android:layout_alignParentEnd="true"
-                            android:text="All Tasks"
-                            android:fontFamily="@font/roboto_regular"
-                            android:textSize="16sp"
-                            android:textColor="@color/colorAccent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+                ̥<androidx.cardview.widget.CardView
+                    app:cardCornerRadius="4dp"
+                    android:layout_marginLeft="8dp"
+                    app:cardElevation="1dp"
+                    app:cardBackgroundColor="#ffcdd2"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp">
+                <TextView
+                        android:id="@+id/text_view_tasks_not_done"
+                        android:padding="8dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:text="2 tasks yet to finish"
+                        android:fontFamily="@font/roboto_bold"
+                        android:layout_height="wrap_content"/>
+            </androidx.cardview.widget.CardView>
 
             </LinearLayout>
-
+        </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
+
     </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.core.widget.NestedScrollView
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/task_main_recycler_view"
                 android:clipToPadding="true"
