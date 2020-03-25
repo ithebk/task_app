@@ -57,5 +57,17 @@
         <item name="android:fontFamily">@font/convergence</item>
         <item name="android:drawablePadding">@dimen/sub_task_card_header_padding</item>
     </style>
-
+    <style name="AppTheme.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.Light.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.Light.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="ActionItem">
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:drawablePadding">@dimen/drawable_padding</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/normal_padding</item>
+    </style>
 </resources>

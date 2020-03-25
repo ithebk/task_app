@@ -3,12 +3,13 @@ package com.ithebk.tasks.ui
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ithebk.tasks.R
@@ -34,6 +35,24 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, AddTaskActivity::class.java)
             startActivityForResult(intent, newWordActivityRequestCode)
         }
+
+        bt_action_more.setOnClickListener{
+            MainBottomDialogFragment().show(supportFragmentManager, MainBottomDialogFragment.TAG)
+        }
+
+        search_text.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+        })
     }
 
     private fun setupViewModelProvider() {
