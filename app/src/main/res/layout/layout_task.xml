@@ -8,12 +8,15 @@
         app:strokeWidth="0.5dp"
         app:contentPadding="8dp"
         app:cardCornerRadius="4dp"
-        app:cardElevation="0.5dp"
+        app:cardElevation="1dp"
         android:minHeight="50dp"
         android:maxHeight="200dp"
         android:layout_margin="4dp"
         android:layout_height="wrap_content">
-
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <RelativeLayout
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
@@ -49,5 +52,6 @@
         </FrameLayout>
 
     </RelativeLayout>
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

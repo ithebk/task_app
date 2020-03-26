@@ -182,12 +182,8 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
         <androidx.recyclerview.widget.RecyclerView
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
                 android:id="@+id/task_main_recycler_view"
                 android:clipToPadding="true"
                 android:paddingBottom="76dp"
@@ -199,7 +195,6 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
-    </androidx.core.widget.NestedScrollView>
 
     <androidx.cardview.widget.CardView
             app:cardCornerRadius="25dp"

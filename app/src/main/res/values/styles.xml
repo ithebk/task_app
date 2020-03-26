@@ -12,6 +12,7 @@
         <item name="secondary_text_color">@color/secondary_text_color_dark</item>
         <item name="task_icon_color">@color/task_icon_color_dark</item>
         <item name="extra_icon_color">@color/extra_icon_color_dark</item>
+        <item name="primary_color">@color/primary_color_dark</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
     </style>
 
@@ -26,6 +27,7 @@
         <item name="secondary_text_color">@color/secondary_text_color_light</item>
         <item name="task_icon_color">@color/task_icon_color_light</item>
         <item name="extra_icon_color">@color/extra_icon_color_light</item>
+        <item name="primary_color">@color/primary_color_light</item>
     </style>
 
     <style name="TaskTitleCard">
@@ -63,6 +65,7 @@
     </style>
     <style name="AppTheme.Light.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.Light.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="ActionItem">
         <item name="android:textSize">@dimen/text_size</item>
         <item name="android:drawablePadding">@dimen/drawable_padding</item>

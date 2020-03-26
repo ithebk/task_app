@@ -8,7 +8,7 @@ import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -20,7 +20,7 @@ import com.ithebk.tasks.viewModels.TaskViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBottomSheetListener {
     private lateinit var viewAdapter: TaskListAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var taskViewModel: TaskViewModel
@@ -32,15 +32,17 @@ class MainActivity : AppCompatActivity() {
         setupViewModelProvider()
 
         add_task_fab.setOnClickListener {
-            val intent = Intent(this@MainActivity, AddTaskActivity::class.java)
-            startActivityForResult(intent, newWordActivityRequestCode)
+//            val intent = Intent(this@MainActivity, AddTaskActivity::class.java)
+//            startActivityForResult(intent, newWordActivityRequestCode)
+            AddTaskBottomDialogFragment().show(supportFragmentManager, AddTaskBottomDialogFragment.TAG)
+
         }
 
-        bt_action_more.setOnClickListener{
-            MainBottomDialogFragment().show(supportFragmentManager, MainBottomDialogFragment.TAG)
+        bt_action_more.setOnClickListener {
+            AddTaskBottomDialogFragment().show(supportFragmentManager, AddTaskBottomDialogFragment.TAG)
         }
 
-        search_text.addTextChangedListener(object : TextWatcher{
+        search_text.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
 
             }
@@ -57,7 +59,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupViewModelProvider() {
         // Get a new or existing ViewModel from the ViewModelProvider.
-        taskViewModel = ViewModelProviders.of(this).get(TaskViewModel::class.java)
+        taskViewModel =
+            ViewModelProvider(
+                this,
+                ViewModelProvider.AndroidViewModelFactory(application)
+            ).get(TaskViewModel ::class.java)
 
         // Add an observer on the LiveData returned by getAll function.
         // The onChanged() method fires when the observed data changes and the activity is
@@ -65,23 +71,26 @@ class MainActivity : AppCompatActivity() {
         taskViewModel.allTasks.observe(this, Observer { tasks ->
             // Update the cached copy of the task in the adapter.
             tasks?.let { viewAdapter.setWords(it) }
-            text_view_tasks_done.text = tasks.filter { it.done }.size.toString() + " Tasks completed"
-            text_view_tasks_not_done.text = tasks.filter { !it.done }.size.toString()  + " Yet to finish"
+            text_view_tasks_done.text =
+                tasks.filter { it.done }.size.toString() + " Tasks completed"
+            text_view_tasks_not_done.text =
+                tasks.filter { !it.done }.size.toString() + " Yet to finish"
         })
     }
 
     private fun setAdapter() {
         viewAdapter = TaskListAdapter(this, object : MainItemViewClickCallback {
             override fun onItemClick(position: Int, task: Task) {
-                task.done = !task.done;
+                task.done = !task.done
                 addOrUpdateTask(task, "")
             }
+
             override fun onItemLongClick(position: Int, task: Task) {
                 delete(task)
             }
         })
         viewManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-       // viewManager = LinearLayoutManager(this)
+        // viewManager = LinearLayoutManager(this)
         task_main_recycler_view.apply {
             setHasFixedSize(true)
             layoutManager = viewManager
@@ -95,7 +104,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addOrUpdateTask(taskPrev: Task?, stringExtra: String) {
-        val task = taskPrev?:Task(
+        val task = taskPrev ?: Task(
             0,
             System.currentTimeMillis(),
             System.currentTimeMillis(),
@@ -103,6 +112,7 @@ class MainActivity : AppCompatActivity() {
         )
         taskViewModel.insert(task)
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -118,7 +128,23 @@ class MainActivity : AppCompatActivity() {
             ).show()
         }
     }
+
     companion object {
         const val newWordActivityRequestCode = 1
+    }
+
+    override fun onSave(name: String) {
+        if(name.isNotEmpty()) {
+            name?.let {
+                addOrUpdateTask(null, name)
+            }
+        }
+        else {
+            Toast.makeText(
+                applicationContext,
+                "Empty data not saved",
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 }
