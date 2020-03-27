@@ -10,7 +10,6 @@ import android.widget.EditText
 import androidx.cardview.widget.CardView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ithebk.tasks.R
-import kotlinx.android.synthetic.main.fragment_layout_add_task.*
 
 class AddTaskBottomDialogFragment : BottomSheetDialogFragment() {
     private lateinit var mListener: AddTaskBottomSheetListener
@@ -21,7 +20,7 @@ class AddTaskBottomDialogFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var rootView = inflater.inflate(R.layout.fragment_layout_add_task, container, false)
+        var rootView = inflater.inflate(R.layout.add_task_bottom_layout_sheet, container, false)
         editWordView = rootView.findViewById(R.id.edit_word)
         rootView.findViewById<CardView>(R.id.bt_add_task).setOnClickListener {
             dismiss()

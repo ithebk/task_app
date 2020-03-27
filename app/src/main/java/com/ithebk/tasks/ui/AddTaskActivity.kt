@@ -12,7 +12,7 @@ class AddTaskActivity : AppCompatActivity() {
     private lateinit var editWordView: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_layout_add_task)
+        setContentView(R.layout.add_task_bottom_layout_sheet)
         editWordView = findViewById(R.id.edit_word)
 
     }
