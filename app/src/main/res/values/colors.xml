@@ -22,4 +22,7 @@
     <color name="yet_to_done_task">#ffcdd2</color>
     <color name="done_task">#a5d6a7</color>
 
+    <color name="selected_light">#30000000</color>
+    <color name="selected_dark">#30FFFFFF</color>
+
 </resources>

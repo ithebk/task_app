@@ -1,12 +1,11 @@
 package com.ithebk.tasks.ui
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -16,14 +15,15 @@ import com.ithebk.tasks.R
 import com.ithebk.tasks.adapter.TaskListAdapter
 import com.ithebk.tasks.callbacks.MainItemViewClickCallback
 import com.ithebk.tasks.db.Task
-import com.ithebk.tasks.viewModels.TaskViewModel
+import com.ithebk.tasks.viewModels.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBottomSheetListener {
     private lateinit var viewAdapter: TaskListAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
-    private lateinit var taskViewModel: TaskViewModel
+    private lateinit var mainViewModel: MainViewModel
+    private var emptyTaskFragment : EmptyTaskFragment = EmptyTaskFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
         }
 
         bt_action_more.setOnClickListener {
-            AddTaskBottomDialogFragment().show(supportFragmentManager, AddTaskBottomDialogFragment.TAG)
+            //EmptyTaskFragment().show(supportFragmentManager, AddTaskBottomDialogFragment.TAG)
         }
 
         search_text.addTextChangedListener(object : TextWatcher {
@@ -52,29 +52,34 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
             }
         })
     }
 
     private fun setupViewModelProvider() {
         // Get a new or existing ViewModel from the ViewModelProvider.
-        taskViewModel =
+        mainViewModel =
             ViewModelProvider(
                 this,
                 ViewModelProvider.AndroidViewModelFactory(application)
-            ).get(TaskViewModel ::class.java)
+            ).get(MainViewModel ::class.java)
 
         // Add an observer on the LiveData returned by getAll function.
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
-        taskViewModel.allTasks.observe(this, Observer { tasks ->
+        mainViewModel.allTasks.observe(this, Observer { tasks ->
             // Update the cached copy of the task in the adapter.
             tasks?.let { viewAdapter.setWords(it) }
             text_view_tasks_done.text =
                 tasks.filter { it.done }.size.toString() + " Tasks completed"
             text_view_tasks_not_done.text =
                 tasks.filter { !it.done }.size.toString() + " Yet to finish"
+            if(tasks.isEmpty()) {
+                supportFragmentManager.beginTransaction().replace(R.id.frame_main, emptyTaskFragment).commit()
+            }
+            else {
+                supportFragmentManager.beginTransaction().remove(emptyTaskFragment).commit()
+            }
         })
     }
 
@@ -84,9 +89,17 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
                 openBottomTaskViewer(position, task)
             }
 
-            override fun onItemLongClick(position: Int, task: Task) {
-                //delete(task)
+            override fun onItemLongClick(tasks: List<Task>) {
+                if(tasks.isEmpty()) {
+                    add_task_fab.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorAccent))
+                    text_main_action.text = "Add new task"
+                }
+                else {
+                    add_task_fab.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.delete_red))
+                    text_main_action.text = "Delete All"
+                }
             }
+
 
             override fun onItemCircleClick(position: Int, task: Task) {
                 task.done = !task.done
@@ -108,7 +121,7 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
     }
 
     private fun delete(task: Task) {
-        taskViewModel.delete(task)
+        mainViewModel.delete(task)
     }
 
     private fun addOrUpdateTask(taskPrev: Task?, stringExtra: String) {
@@ -118,7 +131,7 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
             System.currentTimeMillis(),
             stringExtra
         )
-        taskViewModel.insert(task)
+        mainViewModel.insert(task)
     }
 
 

@@ -13,6 +13,7 @@
         <item name="task_icon_color">@color/task_icon_color_dark</item>
         <item name="extra_icon_color">@color/extra_icon_color_dark</item>
         <item name="primary_color">@color/primary_color_dark</item>
+        <item name="selected_color">@color/selected_dark</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
     </style>
 
@@ -28,6 +29,7 @@
         <item name="task_icon_color">@color/task_icon_color_light</item>
         <item name="extra_icon_color">@color/extra_icon_color_light</item>
         <item name="primary_color">@color/primary_color_light</item>
+        <item name="selected_color">@color/selected_light</item>
     </style>
 
     <style name="TaskTitleCard">

@@ -60,6 +60,7 @@ class AddTaskBottomDialogFragment : BottomSheetDialogFragment() {
         return rootView
     }
 
+
     companion object {
         private const val TASK = "task"
         const val TAG = "MAIN_BOTTOM_DIALOG_FRAGMENT"

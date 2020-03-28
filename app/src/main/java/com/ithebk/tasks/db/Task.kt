@@ -13,5 +13,6 @@ data class Task(
     val modified_at: Long,
     var info: String,
     var done : Boolean = false,
-    val deleted : Boolean = false
+    val deleted : Boolean = false,
+    var selected: Boolean  = false
     ) : Serializable

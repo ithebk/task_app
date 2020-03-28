@@ -10,7 +10,7 @@ import com.ithebk.tasks.db.TaskRoomDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TaskViewModel(application : Application) : AndroidViewModel(application) {
+class MainViewModel(application : Application) : AndroidViewModel(application) {
 
     private val repository : TaskRepository
     val allTasks: LiveData<List<Task>>
@@ -26,5 +26,8 @@ class TaskViewModel(application : Application) : AndroidViewModel(application) {
     }
     fun delete(task : Task) = viewModelScope.launch(Dispatchers.IO) {
         repository.delete(task)
+    }
+    fun query(q: String) = viewModelScope.launch(Dispatchers.IO) {
+        repository.query(q)
     }
 }

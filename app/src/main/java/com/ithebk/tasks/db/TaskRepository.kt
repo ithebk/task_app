@@ -18,4 +18,7 @@ class TaskRepository(private val taskDao : TaskDao) {
     suspend fun delete(task: Task) {
         taskDao.delete(task);
     }
+    suspend fun query(q: String) {
+        taskDao.query(q);
+    }
 }

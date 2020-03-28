@@ -18,6 +18,9 @@ interface TaskDao {
     @Delete()
     fun delete(task: Task)
 
+    @Query("SELECT * from task_table WHERE info LIKE :query " + "ORDER BY modified_at DESC")
+    fun query(query: String?) : LiveData<List<Task>>
+
 
 
 }
