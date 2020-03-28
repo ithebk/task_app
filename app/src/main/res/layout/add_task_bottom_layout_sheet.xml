@@ -22,8 +22,8 @@
                     android:id="@+id/edit_word"
                     android:clipToPadding="true"
                     android:paddingBottom="76dp"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     android:paddingTop="16dp"
                     android:inputType="textCapSentences|textMultiLine"
                     android:fontFamily="@font/roboto_regular"
@@ -39,12 +39,12 @@
 
             </EditText>
             <LinearLayout
-                    android:padding="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
             >
                 <LinearLayout
+                        android:padding="8dp"
                         android:weightSum="2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -56,7 +56,7 @@
                             android:layout_width="0dp"
                             android:layout_height="80dp">
                         <LinearLayout
-                                android:padding="4dp"
+                                android:layout_margin="8dp"
                                 android:orientation="vertical"
                                 android:layout_gravity="center_vertical"
                                 android:gravity="center"
@@ -88,7 +88,7 @@
                         android:layout_width="0dp"
                         android:layout_height="80dp">
                         <LinearLayout
-                                android:padding="4dp"
+                                android:layout_margin="8dp"
                                 android:orientation="vertical"
                                 android:gravity="center"
                                 android:layout_width="match_parent"
@@ -123,11 +123,14 @@
                         app:cardElevation="0.5dp"
                         android:minHeight="50dp"
                         android:layout_marginTop="24dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:maxHeight="200dp"
                         android:foreground="?selectableItemBackgroundBorderless"
                         android:layout_height="wrap_content">
 
                     <TextView
+                            android:id="@+id/text_view_add_or_update"
                             android:text="ADD"
                             android:layout_gravity="center"
                             android:layout_width="wrap_content"

@@ -32,9 +32,9 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
         setupViewModelProvider()
 
         add_task_fab.setOnClickListener {
-//            val intent = Intent(this@MainActivity, AddTaskActivity::class.java)
+//            val intent = Intent(thisfr@MainActivity, AddTaskActivity::class.java)
 //            startActivityForResult(intent, newWordActivityRequestCode)
-            AddTaskBottomDialogFragment().show(supportFragmentManager, AddTaskBottomDialogFragment.TAG)
+            AddTaskBottomDialogFragment.newInstance().show(supportFragmentManager, AddTaskBottomDialogFragment.TAG)
 
         }
 
@@ -81,12 +81,16 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
     private fun setAdapter() {
         viewAdapter = TaskListAdapter(this, object : MainItemViewClickCallback {
             override fun onItemClick(position: Int, task: Task) {
-                task.done = !task.done
-                addOrUpdateTask(task, "")
+                openBottomTaskViewer(position, task)
             }
 
             override fun onItemLongClick(position: Int, task: Task) {
-                delete(task)
+                //delete(task)
+            }
+
+            override fun onItemCircleClick(position: Int, task: Task) {
+                task.done = !task.done
+                addOrUpdateTask(task, "")
             }
         })
         viewManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -97,6 +101,10 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
             adapter = viewAdapter
             itemAnimator = DefaultItemAnimator()
         }
+    }
+
+    private fun openBottomTaskViewer(position: Int, task: Task) {
+        AddTaskBottomDialogFragment.newInstance(task).show(supportFragmentManager, AddTaskBottomDialogFragment.TAG)
     }
 
     private fun delete(task: Task) {
@@ -113,31 +121,28 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
         taskViewModel.insert(task)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            data?.let {
-                addOrUpdateTask(null, it.getStringExtra(AddTaskActivity.EXTRA_REPLY))
-            }
-        } else {
-            Toast.makeText(
-                applicationContext,
-                "Empty data not saved",
-                Toast.LENGTH_LONG
-            ).show()
-        }
-    }
-
-    companion object {
-        const val newWordActivityRequestCode = 1
-    }
-
-    override fun onSave(name: String) {
+    override fun onSave(name: String, action: ACTION, prevTask: Task?) {
         if(name.isNotEmpty()) {
-            name?.let {
-                addOrUpdateTask(null, name)
+            if(action == ACTION.NEW) {
+                name?.let {
+                    addOrUpdateTask(null, name)
+                }
             }
+            else if(action == ACTION.UPDATE) {
+                if (prevTask != null) {
+                    prevTask.info = name
+                    name?.let {
+                        addOrUpdateTask(prevTask, "")
+                    }
+                }
+            }
+            else if(action == ACTION.DELETE) {
+                if (prevTask != null) {
+                    delete(prevTask)
+                }
+            }
+
         }
         else {
             Toast.makeText(

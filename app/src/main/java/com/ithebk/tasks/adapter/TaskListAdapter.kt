@@ -39,6 +39,9 @@ class TaskListAdapter internal constructor(
             holder.statusImage.setImageResource(R.drawable.ic_task_active)
         }
         holder.itemView.task_card_status_frame.setOnClickListener{
+            callback.onItemCircleClick(position, current)
+        }
+        holder.itemView.card_layout_task.setOnClickListener {
             callback.onItemClick(position, current)
         }
 

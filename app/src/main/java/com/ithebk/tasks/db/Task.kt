@@ -3,6 +3,7 @@ package com.ithebk.tasks.db
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "task_table")
 data class Task(
@@ -10,7 +11,7 @@ data class Task(
     val taskId : Long,
     val created_at: Long,
     val modified_at: Long,
-    val info: String,
+    var info: String,
     var done : Boolean = false,
     val deleted : Boolean = false
-    )
+    ) : Serializable

@@ -10,9 +10,12 @@
         app:cardCornerRadius="4dp"
         app:cardElevation="1dp"
         android:minHeight="50dp"
+        android:foreground="?selectableItemBackgroundBorderless"
         android:maxHeight="200dp"
         android:layout_margin="4dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/card_layout_task"
+        >
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"

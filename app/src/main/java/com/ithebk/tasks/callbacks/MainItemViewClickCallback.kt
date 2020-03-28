@@ -4,7 +4,7 @@ import com.ithebk.tasks.db.Task
 
 
 interface MainItemViewClickCallback {
-    fun onItemClick(position: Int, text: Task) {
-    }fun onItemLongClick(position: Int, text: Task) {
-    }
+    fun onItemClick(position: Int, text: Task)
+    fun onItemLongClick(position: Int, text: Task)
+    fun onItemCircleClick(position: Int, task: Task)
 }
