@@ -12,7 +12,6 @@
     <androidx.core.widget.NestedScrollView
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
             android:layout_width="match_parent"
-            android:padding="10dp"
             android:fillViewport="true"
             android:layout_height="wrap_content">
         <LinearLayout android:layout_width="match_parent"
@@ -23,9 +22,9 @@
             <EditText
                     android:id="@+id/edit_word"
                     android:clipToPadding="true"
-                    android:paddingBottom="76dp"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:paddingBottom="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
                     android:paddingTop="16dp"
                     android:inputType="textCapSentences|textMultiLine"
                     android:fontFamily="@font/roboto_regular"
@@ -42,6 +41,9 @@
             </EditText>
 
             <androidx.recyclerview.widget.RecyclerView
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:clipToPadding="false"
                     android:id="@+id/recycler_view_action"
                     android:layout_width="match_parent"
                     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
@@ -57,8 +59,9 @@
                     app:cardElevation="0.5dp"
                     android:minHeight="50dp"
                     android:layout_marginTop="24dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:maxHeight="200dp"
                     android:foreground="?selectableItemBackgroundBorderless"
                     android:layout_height="wrap_content">
@@ -87,9 +90,9 @@
                     app:cardCornerRadius="4dp"
                     app:cardElevation="0.5dp"
                     android:minHeight="50dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:maxHeight="200dp"
                     android:foreground="?selectableItemBackgroundBorderless"
                     android:layout_height="wrap_content">

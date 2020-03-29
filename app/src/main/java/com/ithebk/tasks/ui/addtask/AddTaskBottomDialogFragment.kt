@@ -12,13 +12,14 @@ import androidx.cardview.widget.CardView
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ithebk.tasks.R
+import com.ithebk.tasks.Utils
 import com.ithebk.tasks.callbacks.ActionCallback
 import com.ithebk.tasks.db.Task
 import com.ithebk.tasks.models.EXTRA_ACTION
-import com.ithebk.tasks.models.EXTRA_ACTION_TYPE
 import com.ithebk.tasks.models.TaskAction
 
 enum class ACTION {
@@ -75,13 +76,13 @@ class AddTaskBottomDialogFragment : BottomSheetDialogFragment() {
         var taskActions = mutableListOf<TaskAction>()
         for (i in 0..3) {
             taskActions.add(TaskAction(
-                EXTRA_ACTION.ADD_NOTIFICATION,
-                EXTRA_ACTION_TYPE.ADD,
+                EXTRA_ACTION.NOTIFICATION,
                 "ADD Notification",
-                R.drawable.ic_add_notification
+                R.drawable.ic_add_notification,
+                false
             ))
         }
-        taskActionAdapter = TaskActionAdapter(context!!, taskActions, object : ActionCallback {
+        taskActionAdapter = TaskActionAdapter(context!!, Utils.ACTIONS, object : ActionCallback {
             override fun onItemClick(position: Int, taskAction: TaskAction) {
             }
 
@@ -89,7 +90,7 @@ class AddTaskBottomDialogFragment : BottomSheetDialogFragment() {
 
         recyclerAction.apply {
             setHasFixedSize(true)
-            layoutManager = GridLayoutManager(context, 2)
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = taskActionAdapter
             itemAnimator = DefaultItemAnimator()
         }

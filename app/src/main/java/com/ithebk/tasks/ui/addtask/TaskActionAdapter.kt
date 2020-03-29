@@ -4,7 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.ithebk.tasks.R
 import com.ithebk.tasks.callbacks.ActionCallback
 import com.ithebk.tasks.callbacks.MainItemViewClickCallback
@@ -26,7 +29,8 @@ class TaskActionAdapter internal constructor(
     private var actions = taskActions // Cached copy of words
 
     inner class ActionButtonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+        var tvActionName : TextView = itemView.findViewById(R.id.text_action_name)
+        var imageAction : ImageView = itemView.findViewById(R.id.image_action)
     }
     inner class ActionValueViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -48,7 +52,8 @@ class TaskActionAdapter internal constructor(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ActionButtonViewHolder) {
-
+            holder.tvActionName.text = actions.get(position).value
+            holder.imageAction.setImageResource(actions.get(position).icon)
         }
         else if(holder is ActionValueViewHolder) {
 
