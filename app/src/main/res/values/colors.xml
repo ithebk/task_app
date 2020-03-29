@@ -24,5 +24,6 @@
 
     <color name="selected_light">#30000000</color>
     <color name="selected_dark">#30FFFFFF</color>
+    <color name="start">#b2ebf2</color>
 
 </resources>

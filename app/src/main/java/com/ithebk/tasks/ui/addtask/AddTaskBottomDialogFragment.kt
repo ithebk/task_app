@@ -1,4 +1,4 @@
-package com.ithebk.tasks.ui
+package com.ithebk.tasks.ui.addtask
 
 import android.content.Context
 import android.content.DialogInterface
@@ -25,7 +25,8 @@ class AddTaskBottomDialogFragment : BottomSheetDialogFragment() {
     private lateinit var editWordView: EditText
     private lateinit var btDeleteTask: CardView
     private lateinit var textAddOrUpdate: TextView
-    private var action: ACTION = ACTION.NEW
+    private var action: ACTION =
+        ACTION.NEW
     private var currentTask: Task? = null
 
 
@@ -64,7 +65,8 @@ class AddTaskBottomDialogFragment : BottomSheetDialogFragment() {
     companion object {
         private const val TASK = "task"
         const val TAG = "MAIN_BOTTOM_DIALOG_FRAGMENT"
-        fun newInstance(task: Task? = null) = AddTaskBottomDialogFragment().apply {
+        fun newInstance(task: Task? = null) = AddTaskBottomDialogFragment()
+            .apply {
             arguments = bundleOf(
                 TASK to task
             )

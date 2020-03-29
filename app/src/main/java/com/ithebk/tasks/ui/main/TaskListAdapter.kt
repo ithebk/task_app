@@ -1,4 +1,4 @@
-package com.ithebk.tasks.adapter
+package com.ithebk.tasks.ui.main
 
 import android.content.Context
 import android.view.LayoutInflater

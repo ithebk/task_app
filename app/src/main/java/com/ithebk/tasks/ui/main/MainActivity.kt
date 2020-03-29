@@ -1,4 +1,4 @@
-package com.ithebk.tasks.ui
+package com.ithebk.tasks.ui.main
 
 import android.os.Bundle
 import android.text.Editable
@@ -12,9 +12,10 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ithebk.tasks.R
-import com.ithebk.tasks.adapter.TaskListAdapter
 import com.ithebk.tasks.callbacks.MainItemViewClickCallback
 import com.ithebk.tasks.db.Task
+import com.ithebk.tasks.ui.addtask.ACTION
+import com.ithebk.tasks.ui.addtask.AddTaskBottomDialogFragment
 import com.ithebk.tasks.viewModels.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -23,7 +24,8 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
     private lateinit var viewAdapter: TaskListAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var mainViewModel: MainViewModel
-    private var emptyTaskFragment : EmptyTaskFragment = EmptyTaskFragment()
+    private var emptyTaskFragment : EmptyTaskFragment =
+        EmptyTaskFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +34,7 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
         setupViewModelProvider()
 
         add_task_fab.setOnClickListener {
-//            val intent = Intent(thisfr@MainActivity, AddTaskActivity::class.java)
-//            startActivityForResult(intent, newWordActivityRequestCode)
             AddTaskBottomDialogFragment.newInstance().show(supportFragmentManager, AddTaskBottomDialogFragment.TAG)
-
         }
 
         bt_action_more.setOnClickListener {
@@ -84,28 +83,49 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
     }
 
     private fun setAdapter() {
-        viewAdapter = TaskListAdapter(this, object : MainItemViewClickCallback {
-            override fun onItemClick(position: Int, task: Task) {
-                openBottomTaskViewer(position, task)
-            }
-
-            override fun onItemLongClick(tasks: List<Task>) {
-                if(tasks.isEmpty()) {
-                    add_task_fab.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorAccent))
-                    text_main_action.text = "Add new task"
+        viewAdapter = TaskListAdapter(
+            this,
+            object : MainItemViewClickCallback {
+                override fun onItemClick(position: Int, task: Task) {
+                    openBottomTaskViewer(position, task)
                 }
-                else {
-                    add_task_fab.setCardBackgroundColor(ContextCompat.getColor(applicationContext, R.color.delete_red))
-                    text_main_action.text = "Delete All"
+
+                override fun onItemLongClick(tasks: List<Task>) {
+                    if (tasks.isEmpty()) {
+                        image_main_action.setImageResource(R.drawable.ic_add_24dp)
+                        add_task_fab.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.colorAccent
+                            )
+                        )
+                        text_main_action.text = "Add new task"
+                        add_task_fab.setOnClickListener {
+                            AddTaskBottomDialogFragment.newInstance()
+                                .show(supportFragmentManager, AddTaskBottomDialogFragment.TAG)
+                        }
+                    } else {
+                        image_main_action.setImageResource(R.drawable.ic_delete_24dp)
+                        add_task_fab.setCardBackgroundColor(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.delete_red
+                            )
+                        )
+                        text_main_action.text = "Delete All"
+                        add_task_fab.setOnClickListener {
+                            println("Delete All")
+                            //AddTaskBottomDialogFragment.newInstance().show(supportFragmentManager, AddTaskBottomDialogFragment.TAG)
+                        }
+                    }
                 }
-            }
 
 
-            override fun onItemCircleClick(position: Int, task: Task) {
-                task.done = !task.done
-                addOrUpdateTask(task, "")
-            }
-        })
+                override fun onItemCircleClick(position: Int, task: Task) {
+                    task.done = !task.done
+                    addOrUpdateTask(task, "")
+                }
+            })
         viewManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         // viewManager = LinearLayoutManager(this)
         task_main_recycler_view.apply {

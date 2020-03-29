@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context=".ui.MainActivity">
+        tools:context=".ui.main.MainActivity">
     <com.google.android.material.appbar.AppBarLayout
             app:elevation="2dp"
             android:background="@null"
@@ -37,7 +37,7 @@
                         android:paddingStart="16dp"
                         app:cardElevation="1dp"
                         app:cardBackgroundColor="?colorPrimary"
-                        app:cardCornerRadius="4dp"
+                        app:cardCornerRadius="6dp"
                         android:paddingEnd="16dp"
                         android:layout_height="wrap_content">
                     <LinearLayout
@@ -76,62 +76,6 @@
 
 
                         </RelativeLayout>
-                        <LinearLayout
-                                android:visibility="gone"
-                                android:id="@+id/calender_linear_layout"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-                            <LinearLayout android:layout_width="wrap_content"
-                                          android:background="@drawable/tab_selector"
-                                          android:padding="8dp"
-                                          android:layout_height="56dp">
-                                <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/all_tasks"
-                                        android:gravity="center"
-                                        android:textSize="16sp"
-                                        android:layout_gravity="center_vertical"
-                                        android:textColor="?primary_text_color"
-                                />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                    android:layout_marginStart="8dp"
-                                    android:layout_width="wrap_content"
-                                    android:padding="8dp"
-                                    android:layout_height="56dp">
-                                <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/date1"
-                                        android:gravity="center"
-                                        android:textSize="16sp"
-                                        android:layout_gravity="center_vertical"
-                                        android:textColor="?secondary_text_color"
-                                />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                    android:layout_marginStart="8dp"
-                                    android:layout_width="wrap_content"
-                                    android:padding="8dp"
-                                    android:layout_height="56dp">
-                                <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/date1"
-                                        android:gravity="center"
-                                        android:textSize="16sp"
-                                        android:layout_gravity="center_vertical"
-                                        android:textColor="?secondary_text_color"
-                                />
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
                     </LinearLayout>
 
 
@@ -216,6 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
             <ImageView
+                    android:id="@+id/image_main_action"
                     android:src="@drawable/ic_add_24dp"
                     android:layout_marginEnd="10dp"
                     android:layout_width="wrap_content"

@@ -1,4 +1,4 @@
-package com.ithebk.tasks.ui
+package com.ithebk.tasks.ui.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
