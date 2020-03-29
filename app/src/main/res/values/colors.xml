@@ -26,4 +26,7 @@
     <color name="selected_dark">#30FFFFFF</color>
     <color name="start">#b2ebf2</color>
 
+    <color name="material_color_light">#eeeeee</color>
+    <color name="material_color_dark">#303030</color>
+
 </resources>

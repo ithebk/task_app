@@ -16,7 +16,6 @@ import com.ithebk.tasks.callbacks.MainItemViewClickCallback
 import com.ithebk.tasks.db.Task
 import com.ithebk.tasks.ui.addtask.ACTION
 import com.ithebk.tasks.ui.addtask.AddTaskBottomDialogFragment
-import com.ithebk.tasks.viewModels.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -61,7 +60,7 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
             ViewModelProvider(
                 this,
                 ViewModelProvider.AndroidViewModelFactory(application)
-            ).get(MainViewModel ::class.java)
+            ).get(MainViewModel::class.java)
 
         // Add an observer on the LiveData returned by getAll function.
         // The onChanged() method fires when the observed data changes and the activity is

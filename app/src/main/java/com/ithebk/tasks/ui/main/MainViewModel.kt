@@ -1,4 +1,4 @@
-package com.ithebk.tasks.viewModels
+package com.ithebk.tasks.ui.main
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

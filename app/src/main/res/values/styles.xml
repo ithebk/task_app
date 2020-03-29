@@ -3,6 +3,7 @@
 
     <style name="AppTheme.Light" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
         <item name="colorPrimary">@color/primary_color_light</item>
         <item name="colorPrimaryDark">@color/primary_color_light</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -14,7 +15,7 @@
         <item name="extra_icon_color">@color/extra_icon_color_dark</item>
         <item name="primary_color">@color/primary_color_dark</item>
         <item name="selected_color">@color/selected_dark</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="material_color">@color/material_color_light</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
@@ -30,6 +31,7 @@
         <item name="extra_icon_color">@color/extra_icon_color_light</item>
         <item name="primary_color">@color/primary_color_light</item>
         <item name="selected_color">@color/selected_light</item>
+        <item name="material_color">@color/material_color_dark</item>
     </style>
 
     <style name="TaskTitleCard">

@@ -6,12 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ithebk.tasks.R
+import com.ithebk.tasks.callbacks.ActionCallback
 import com.ithebk.tasks.callbacks.MainItemViewClickCallback
 import com.ithebk.tasks.db.Task
+import com.ithebk.tasks.models.TaskAction
 
 class TaskActionAdapter internal constructor(
     context: Context,
-    private val callback: MainItemViewClickCallback
+    taskActions: List<TaskAction>,
+    private val callback: ActionCallback
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
         var ITEM_VIEW_ACTION_BUTTON = 1
@@ -20,7 +23,7 @@ class TaskActionAdapter internal constructor(
     }
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var tasks = emptyList<Task>() // Cached copy of words
+    private var actions = taskActions // Cached copy of words
 
     inner class ActionButtonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -59,6 +62,6 @@ class TaskActionAdapter internal constructor(
     }
 
     override fun getItemCount(): Int {
-        return tasks.size
+        return actions.size
     }
 }

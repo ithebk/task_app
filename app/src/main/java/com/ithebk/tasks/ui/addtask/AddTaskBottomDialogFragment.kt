@@ -10,9 +10,16 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.os.bundleOf
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ithebk.tasks.R
+import com.ithebk.tasks.callbacks.ActionCallback
 import com.ithebk.tasks.db.Task
+import com.ithebk.tasks.models.EXTRA_ACTION
+import com.ithebk.tasks.models.EXTRA_ACTION_TYPE
+import com.ithebk.tasks.models.TaskAction
 
 enum class ACTION {
     NEW,
@@ -29,6 +36,9 @@ class AddTaskBottomDialogFragment : BottomSheetDialogFragment() {
         ACTION.NEW
     private var currentTask: Task? = null
 
+    private lateinit var recyclerAction: RecyclerView
+    private lateinit var taskActionAdapter: TaskActionAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +49,7 @@ class AddTaskBottomDialogFragment : BottomSheetDialogFragment() {
         editWordView = rootView.findViewById(R.id.edit_word)
         btDeleteTask = rootView.findViewById(R.id.bt_delete_task)
         textAddOrUpdate = rootView.findViewById(R.id.text_view_add_or_update)
+        recyclerAction = rootView.findViewById(R.id.recycler_view_action)
         rootView.findViewById<CardView>(R.id.bt_add_task).setOnClickListener {
             dismiss()
         }
@@ -56,9 +67,32 @@ class AddTaskBottomDialogFragment : BottomSheetDialogFragment() {
             action = ACTION.DELETE
             dismiss()
         }
-
-
+        setActionAdapter()
         return rootView
+    }
+
+    private fun setActionAdapter() {
+        var taskActions = mutableListOf<TaskAction>()
+        for (i in 0..3) {
+            taskActions.add(TaskAction(
+                EXTRA_ACTION.ADD_NOTIFICATION,
+                EXTRA_ACTION_TYPE.ADD,
+                "ADD Notification",
+                R.drawable.ic_add_notification
+            ))
+        }
+        taskActionAdapter = TaskActionAdapter(context!!, taskActions, object : ActionCallback {
+            override fun onItemClick(position: Int, taskAction: TaskAction) {
+            }
+
+        })
+
+        recyclerAction.apply {
+            setHasFixedSize(true)
+            layoutManager = GridLayoutManager(context, 2)
+            adapter = taskActionAdapter
+            itemAnimator = DefaultItemAnimator()
+        }
     }
 
 
