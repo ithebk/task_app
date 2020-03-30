@@ -43,7 +43,7 @@
                 <FrameLayout
                         android:id="@+id/task_card_status_frame"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_alignTop="@+id/textView"
                         android:layout_alignBottom="@+id/textView"
                         android:layout_alignParentEnd="true"
@@ -52,10 +52,11 @@
 
                     <ImageView
                             android:id="@+id/task_card_status_image"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:clickable="false"
+                            android:focusable="false"
                             app:srcCompat="@drawable/ic_task_active" />
 
                 </FrameLayout>

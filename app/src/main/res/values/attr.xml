@@ -16,4 +16,8 @@
     <attr name="selected_color" format="reference|color" />
 
     <attr name="material_color" format="reference|color" />
+
+    <attr name="background_main" format="reference|color" />
+
+    <attr name="hint_color" format="reference|color" />
 </resources>

@@ -46,7 +46,7 @@ class AddTaskBottomDialogFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.add_task_bottom_layout_sheet, container, false)
+        val rootView = inflater.inflate(R.layout.add_task_bottom_layout_sheet, container, true)
         editWordView = rootView.findViewById(R.id.edit_word)
         btDeleteTask = rootView.findViewById(R.id.bt_delete_task)
         textAddOrUpdate = rootView.findViewById(R.id.text_view_add_or_update)

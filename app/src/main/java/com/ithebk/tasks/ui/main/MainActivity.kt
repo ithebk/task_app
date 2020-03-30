@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ithebk.tasks.R
@@ -126,7 +127,7 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
                 }
             })
         viewManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        // viewManager = LinearLayoutManager(this)
+        //viewManager = LinearLayoutManager(this)
         task_main_recycler_view.apply {
             setHasFixedSize(true)
             layoutManager = viewManager

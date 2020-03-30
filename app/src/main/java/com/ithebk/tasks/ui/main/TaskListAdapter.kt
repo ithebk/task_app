@@ -72,7 +72,10 @@ class TaskListAdapter internal constructor(
 
             holder.itemView.task_card_status_frame.setOnClickListener {
                 when {
-                    !isLongPressActivated -> {
+                    isLongPressActivated -> {
+                        onSelectItem(current, position)
+                    }
+                    else -> {
                         callback.onItemCircleClick(position, current)
                     }
                 }

@@ -4,11 +4,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        app:cardBackgroundColor="?material_color"
+        app:cardBackgroundColor="?colorPrimary"
         android:foreground="?selectableItemBackgroundBorderless"
         app:cardCornerRadius="24dp"
         android:layout_margin="4dp"
-        app:cardElevation="0.5dp">
+        app:cardElevation="0dp">
 
     <LinearLayout
             android:layout_width="wrap_content"
@@ -16,7 +16,11 @@
             android:layout_gravity="center_vertical"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="6dp">
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            >
 
         <ImageView
                 android:id="@+id/image_action"

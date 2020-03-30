@@ -3,10 +3,11 @@
     <color name="primary_color_light">#fff</color>
     <color name="primary_color_dark">#494B4B</color>
 
+
     <color name="colorAccent">#7986CB</color>
 
 
-    <color name="primary_text_color_light">#fff</color>
+    <color name="primary_text_color_light">#eeeeee</color>
     <color name="primary_text_color_dark">#303030</color>
 
     <color name="secondary_text_color_light">#BEC0C2</color>
@@ -28,5 +29,8 @@
 
     <color name="material_color_light">#eeeeee</color>
     <color name="material_color_dark">#303030</color>
+
+    <color name="text_color_hint_light">#20FFFFFF</color>
+    <color name="text_color_hint_dark">#20303030</color>
 
 </resources>

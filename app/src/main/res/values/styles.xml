@@ -1,11 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
 
-    <style name="AppTheme.Light" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.Light" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
         <item name="colorPrimary">@color/primary_color_light</item>
-        <item name="colorPrimaryDark">@color/primary_color_light</item>
+        <item name="colorPrimaryDark">@color/material_color_light</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="task_card_title_color">@color/primary_text_color_dark</item>
         <item name="primary_text_color">@color/primary_text_color_dark</item>
@@ -16,12 +16,14 @@
         <item name="primary_color">@color/primary_color_dark</item>
         <item name="selected_color">@color/selected_dark</item>
         <item name="material_color">@color/material_color_light</item>
+        <item name="background_main">@color/material_color_light</item>
+        <item name="hint_color">@color/text_color_hint_dark</item>
     </style>
 
-    <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primary_color_dark</item>
-        <item name="colorPrimaryDark">@color/primary_color_dark</item>
+        <item name="colorPrimaryDark">@color/material_color_dark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="task_card_title_color">@color/primary_text_color_light</item>
         <item name="primary_text_color">@color/primary_text_color_light</item>
@@ -32,6 +34,8 @@
         <item name="primary_color">@color/primary_color_light</item>
         <item name="selected_color">@color/selected_light</item>
         <item name="material_color">@color/material_color_dark</item>
+        <item name="background_main">@color/material_color_dark</item>
+        <item name="hint_color">@color/text_color_hint_light</item>
     </style>
 
     <style name="TaskTitleCard">

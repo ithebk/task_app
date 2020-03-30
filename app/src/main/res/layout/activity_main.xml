@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="?background_main"
         tools:context=".ui.main.MainActivity">
     <com.google.android.material.appbar.AppBarLayout
             app:elevation="2dp"
@@ -13,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
                 app:elevation="2dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/main_toolbar"
@@ -22,12 +23,13 @@
                 app:contentInsetLeft="0dp"
                 app:contentInsetStart="0dp"
                 android:layout_width="match_parent"
-                app:layout_scrollFlags="scroll|enterAlways"
+                app:layout_scrollFlags="scroll|snap"
         > <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
                 <androidx.cardview.widget.CardView
+                        android:visibility="gone"
                         android:layout_marginTop="2dp"
                         android:layout_marginStart="2dp"
                         android:layout_marginEnd="2dp"
@@ -53,9 +55,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="48dp">
                             <EditText
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    android:imeOptions="actionDone"
                                     android:id="@+id/search_text"
                                     android:textColor="?secondary_text_color"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@null"
                                     android:hint="Search your tasks"
@@ -85,32 +90,33 @@
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                <androidx.cardview.widget.CardView
-                        app:cardElevation="1dp"
-                        app:cardCornerRadius="4dp"
-                        app:cardBackgroundColor="@color/done_task"
+                <com.google.android.material.card.MaterialCardView
                         android:layout_weight="1"
+                        app:cardElevation="1dp"
+                        app:cardCornerRadius="6dp"
+                        app:cardBackgroundColor="@color/done_task"
                         android:layout_width="0dp"
-
-                        android:layout_height="60dp">
+                        android:layout_height="50dp">
                     <TextView
                             android:id="@+id/text_view_tasks_done"
                             android:padding="8dp"
+                            android:textColor="#BE000000"
                             android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:text="4 tasks completed"
                             android:fontFamily="@font/roboto_bold"
                             android:layout_height="wrap_content"/>
-                </androidx.cardview.widget.CardView>
-                ̥<androidx.cardview.widget.CardView
+                </com.google.android.material.card.MaterialCardView>
+                ̥<com.google.android.material.card.MaterialCardView
                     app:cardCornerRadius="4dp"
                     android:layout_marginLeft="8dp"
                     app:cardElevation="1dp"
                     app:cardBackgroundColor="@color/yet_to_done_task"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="60dp">
+                    android:layout_height="50dp">
                 <TextView
+                        android:textColor="#BE000000"
                         android:id="@+id/text_view_tasks_not_done"
                         android:padding="8dp"
                         android:layout_gravity="center"
@@ -118,11 +124,57 @@
                         android:text="2 tasks yet to finish"
                         android:fontFamily="@font/roboto_bold"
                         android:layout_height="wrap_content"/>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
+
+            <LinearLayout
+                    android:weightSum="2"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <com.google.android.material.card.MaterialCardView
+                        android:layout_weight="1"
+                        app:cardElevation="1dp"
+                        app:cardCornerRadius="6dp"
+                        app:cardBackgroundColor="#FFB74D"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp">
+                    <TextView
+                            android:padding="8dp"
+                            android:textColor="#BE000000"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:text="No Due today"
+                            android:fontFamily="@font/roboto_bold"
+                            android:layout_height="wrap_content"/>
+                </com.google.android.material.card.MaterialCardView>
+
+                ̥<com.google.android.material.card.MaterialCardView
+                    app:cardCornerRadius="4dp"
+                    android:layout_marginLeft="8dp"
+                    app:cardElevation="1dp"
+                    app:cardBackgroundColor="?colorPrimary"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp">
+                <TextView
+                        android:textColor="?primary_text_color"
+                        android:padding="8dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:text="More"
+                        android:fontFamily="@font/roboto_bold"
+                        android:layout_height="wrap_content"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
         </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
         <FrameLayout
@@ -167,7 +219,7 @@
                     android:layout_height="wrap_content"/>
             <TextView
                     android:id="@+id/text_main_action"
-                    android:textColor="#fff"
+                    android:textColor="?primary_text_color_invert"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Add new task"

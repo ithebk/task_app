@@ -9,7 +9,7 @@ class Utils {
             TaskAction(
                 EXTRA_ACTION.NOTIFICATION,
                 "Add Notification",
-                R.drawable.ic_delete_16dp,
+                R.drawable.ic_delete_24dp,
                 false
             ),
             TaskAction(
