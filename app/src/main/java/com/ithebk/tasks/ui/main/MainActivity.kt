@@ -17,6 +17,7 @@ import com.ithebk.tasks.callbacks.MainItemViewClickCallback
 import com.ithebk.tasks.db.Task
 import com.ithebk.tasks.ui.addtask.ACTION
 import com.ithebk.tasks.ui.addtask.AddTaskBottomDialogFragment
+import com.ithebk.tasks.ui.settings.ItemListDialogFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -37,13 +38,13 @@ class MainActivity : AppCompatActivity(), AddTaskBottomDialogFragment.AddTaskBot
             AddTaskBottomDialogFragment.newInstance().show(supportFragmentManager, AddTaskBottomDialogFragment.TAG)
         }
 
-        bt_action_more.setOnClickListener {
-            //EmptyTaskFragment().show(supportFragmentManager, AddTaskBottomDialogFragment.TAG)
+        bt_card_action_more.setOnClickListener {
+            ItemListDialogFragment.newInstance(5).show(supportFragmentManager, "dialog")
         }
 
         search_text.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-
+                println("char sequence : :$s")
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {

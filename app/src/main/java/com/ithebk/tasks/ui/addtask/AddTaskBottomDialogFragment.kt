@@ -11,12 +11,11 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ithebk.tasks.R
-import com.ithebk.tasks.Utils
+import com.ithebk.tasks.utils.Utils
 import com.ithebk.tasks.callbacks.ActionCallback
 import com.ithebk.tasks.db.Task
 import com.ithebk.tasks.models.EXTRA_ACTION
